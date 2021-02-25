@@ -42,7 +42,7 @@ def process_song_data(spark, input_data, output_data):
     # get filepath to song data file
 
     #input_data = "s3a://udacity-dend/"
-    song_data = input_data + "song_data"
+    song_data = input_data + "song_data/*/*/*"
     
     # read song data file
     df = spark.read.json(song_data)
@@ -75,7 +75,7 @@ def process_log_data(spark, input_data, output_data):
         output_data (:obj:`str`): Directory where to save the parquet files(personal s3 bucket).
     '''
     # get filepath to log data file
-    log_data = input_data + 'log_data'
+    log_data = input_data + 'log_data/*'
 
     # read log data file
     df = spark.read.json(log_data)
