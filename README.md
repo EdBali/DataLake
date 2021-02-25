@@ -24,3 +24,31 @@ Submitting python script using ```spark-submit``` (Before running job make sure 
 
 ```spark-submit etl.py --master yarn --deploy-mode client --driver-memory 4g --num-executors 2 --executor-memory 2g --executor-core 2```
 
+## Python Script(Pipeline)
+### Read data from S3
+
+Song data: ```s3://udacity-dend/song_data```
+Log data: ```s3://udacity-dend/log_data```
+The script reads song_data and load_data from S3.
+
+### Data processing using spark
+
+Create five different tables to form a star schema as below:
+
+#### Fact Table
+songplays_table - records in log data associated with song plays i.e. records with page NextSong
+
+songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
+#### Dimension Tables
+users_table -- user_id, first_name, last_name, gender, level
+
+songs_table -- song_id, title, artist_id, year, duration
+
+artists_table -- artist_id, name, location, lattitude, longitude
+
+time_table - timestamps of records in songplays broken down into specific units Fields - start_time, hour, day, week, month, year, weekday
+
+### Load data to another S3 bucket
+
+Writes them to partitioned parquet files in table directories on S3.
+
