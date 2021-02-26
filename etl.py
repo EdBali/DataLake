@@ -10,8 +10,7 @@ from sql_queries import songplays_query
 config = configparser.ConfigParser()
 config.read('dl.cfg')
 
-#add a note about os.environ
-    # os.environ is a mapping object that represents the user's environmental variables
+# os.environ is a mapping object that represents the user's environmental variables
 os.environ['AWS_ACCESS_KEY_ID']=config['AWS_ACCESS_KEY_ID']
 os.environ['AWS_SECRET_ACCESS_KEY']=config['AWS_SECRET_ACCESS_KEY']
 
